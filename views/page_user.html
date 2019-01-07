@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{.title}}</title>
+{{template "/base/meta.html"}}
+
+</head>
+<body>
+
+<div class="row user">
+    <div class="col-md-12">
+        <div class="profile">
+            <div class="info"><img class="user-img" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg">
+                <h4>{{.username}}</h4>
+                <p>FrontEnd Developer</p>
+            </div>
+            <div class="cover-image"></div>
+        </div>
+    </div>
+    {{/*<div class="col-md-3">*/}}
+        {{/*<div class="tile p-0">*/}}
+            {{/*<ul class="nav flex-column nav-tabs user-tabs">*/}}
+                {{/*<li class="nav-item"><a class="nav-link active" href="#user-timeline" data-toggle="tab">Timeline</a></li>*/}}
+                {{/*<li class="nav-item"><a class="nav-link" href="#user-settings" data-toggle="tab">Settings</a></li>*/}}
+            {{/*</ul>*/}}
+        {{/*</div>*/}}
+    {{/*</div>*/}}
+    <div class="col-md">
+        <div class="tab-content">
+            {{/*<div class="tab-pane active" id="user-timeline">*/}}
+                {{/*<div class="timeline-post">*/}}
+                    {{/*<div class="post-media"><a href="#"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"></a>*/}}
+                        {{/*<div class="content">*/}}
+                            {{/*<h5><a href="#">John Doe</a></h5>*/}}
+                            {{/*<p class="text-muted"><small>2 January at 9:30</small></p>*/}}
+                        {{/*</div>*/}}
+                    {{/*</div>*/}}
+                    {{/*<div class="post-content">*/}}
+                        {{/*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,	quis tion ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>*/}}
+                    {{/*</div>*/}}
+                    {{/*<ul class="post-utility">*/}}
+                        {{/*<li class="likes"><a href="#"><i class="fa fa-fw fa-lg fa-thumbs-o-up"></i>Like</a></li>*/}}
+                        {{/*<li class="shares"><a href="#"><i class="fa fa-fw fa-lg fa-share"></i>Share</a></li>*/}}
+                        {{/*<li class="comments"><i class="fa fa-fw fa-lg fa-comment-o"></i> 5 Comments</li>*/}}
+                    {{/*</ul>*/}}
+                {{/*</div>*/}}
+                {{/*<div class="timeline-post">*/}}
+                    {{/*<div class="post-media"><a href="#"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"></a>*/}}
+                        {{/*<div class="content">*/}}
+                            {{/*<h5><a href="#">John Doe</a></h5>*/}}
+                            {{/*<p class="text-muted"><small>2 January at 9:30</small></p>*/}}
+                        {{/*</div>*/}}
+                    {{/*</div>*/}}
+                    {{/*<div class="post-content">*/}}
+                        {{/*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,	quis tion ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>*/}}
+                    {{/*</div>*/}}
+                    {{/*<ul class="post-utility">*/}}
+                        {{/*<li class="likes"><a href="#"><i class="fa fa-fw fa-lg fa-thumbs-o-up"></i>Like</a></li>*/}}
+                        {{/*<li class="shares"><a href="#"><i class="fa fa-fw fa-lg fa-share"></i>Share</a></li>*/}}
+                        {{/*<li class="comments"><i class="fa fa-fw fa-lg fa-comment-o"></i> 5 Comments</li>*/}}
+                    {{/*</ul>*/}}
+                {{/*</div>*/}}
+            {{/*</div>*/}}
+            <div class="tab-pane active" id="user-settings">
+                <div class="tile user-settings">
+                    <h4 class="line-head">个人信息</h4>
+                    <form>
+                        <div class="row mb-4">
+                            <div class="col-md-8">
+                                <label>姓名</label>
+                                <input id="username" class="form-control" type="text" disabled="" value="{{.username}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 mb-4">
+                                <label>邮箱</label>
+                                <input id="emile"class="form-control " type="text" disabled="" value="{{.emile}}">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-8 mb-4">
+                                <label>电话号码</label>
+                                <input id="phone"class="form-control" type="text" disabled="" value="{{.phone}}">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-8 mb-4">
+                                <label>生日</label>
+                                <input id="birthday" class="form-control" type="text" disabled="" value="{{.birthday}}">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-8 mb-4">
+                                <button  id="btn_sex" class="btn btn-danger" value="{{.sex}}" type="button "></button>
+                                <label for="exampleSelect1">性别</label>
+                                <select class="form-control" id="exampleSelect1" disabled="" autocomplete="off">
+                                    <option value="0">男</option>
+                                    <option  value="1" >女</option>
+                                </select>
+                                {{/*<label>性别</label>*/}}
+                                {{/*<input class="form-control" type="text" disabled="" value="男">*/}}
+                            </div>
+                        </div>
+                        <div class="row mb-10">
+                            <div class="col-md-12">
+                                <button id="btn_save" class="btn btn-danger" type="button "><i class="fa fa-fw fa-lg fa-check-circle"></i> 保存</button>
+                                <button id="btn_update" class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i> 修改</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+
+
+</script>
+</html>

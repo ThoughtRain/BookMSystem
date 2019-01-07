@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table id="table"></table>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.13.1/bootstrap-table.min.css">
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.13.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.13.1/locale/bootstrap-table-zh-CN.min.js"></script>
+</body>
+<script type="text/javascript">
+    var book ={{.booklist}}
+            $("#table").bootstrapTable({ // 对应table标签的id
+                striped: true,//隔行变色
+                showColumns: false,// 列
+                toobar: '#toolbar',
+                pagination: true, //分页
+                paginationPreText: '上一页',
+                paginationNextText: '下一页',
+                pageList: [5, 10, 25, 50, 100],
+                //    showRefresh: true,//显示刷新
+                search: false, //显示搜索框
+                data: book,
+                columns: [{
+                    field: 'Id',
+                    title: '书籍编号'
+                }, {
+                    field: 'BookName',
+                    title: '书籍名称'
+                }, {
+                    field: 'BookAuthor',
+                    title: '作者'
+                }, {
+                    field: 'BookPub',
+                    title: '出版社'
+                }, {
+                    field: 'BookNum',
+                    title: '书本数量'
+                },]
+
+            })
+</script>
+</html>

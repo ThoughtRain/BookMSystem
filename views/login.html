@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.title}}</title>
+{{template "/base/meta.html"}}
+</head>
+<body>
+<section class="material-half-bg">
+    <div class="cover"></div>
+</section>
+<section class="login-content">
+    <div class="logo">
+        <h1>Vali</h1>
+    </div>
+    <div class="login-box">
+        <form class="login-form">
+            <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>登录</h3>
+            <div class="form-group">
+                <label class="control-label">账号</label>
+                <input id="name" class="form-control" type="text" placeholder="手机号/邮箱" autofocus>
+            </div>
+            <div class="form-group">
+                <label class="control-label">密码</label>
+                <input id="password" class="form-control" type="password" placeholder="请输入密码6-14位密码">
+            </div>
+            <div class="form-group">
+                <div class="utility">
+                    <div class="animated-checkbox">
+                        <label>
+                            <input type="checkbox"><span class="label-text">保存密码</span>
+                        </label>
+                    </div>
+                    <p class="semibold-text mb-2"><a href="#" data-toggle="flip">忘记密码?</a></p>
+                </div>
+            </div>
+            <div class="form-group btn-container">
+                <button id="sendlogin"  class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>登录</button>
+            </div>
+        </form>
+        <form class="forget-form" >
+            <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>忘记密码 ?</h3>
+            <div class="form-group">
+                <label class="control-label">账号</label>
+                <input class="form-control" type="text" placeholder="Email">
+            </div>
+            <div class="form-group btn-container">
+                <button class="btn btn-primary btn-block"><i class="fa fa-unlock fa-lg fa-fw"></i>重置</button>
+            </div>
+            <div class="form-group mt-3">
+                <p class="semibold-text mb-0"><a href="#" data-toggle="flip"><i class="fa fa-angle-left fa-fw"></i> 返回登录</a></p>
+            </div>
+        </form>
+    </div>
+</section>
+{{/*<button id="ddddd" >点击测试</button>*/}}
+<!-- Essential javascripts for application to work-->
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/popper.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/plugins/bootstrap-notify.min.js"></script>
+<script src="/static/js/main.js"></script>
+<!-- The javascript plugin to display page loading on top-->
+<script src="/static/js/plugins/pace.min.js"></script>
+<script src="/static/js/plugins/sweetalert.min.js"></script>
+<script >
+    $("#sendlogin").click(function () {
+       var name = $("#name").val();
+       var password=$("#password").val();
+    comm.Login("/user/login",name,password)
+
+        return false
+    })
+
+
+</script>
+<script type="text/javascript">
+    $('.login-content [data-toggle="flip"]').click(function() {
+        $('.login-box').toggleClass('flipped');
+        return false;
+    });
+</script>
+</body>
+</html>

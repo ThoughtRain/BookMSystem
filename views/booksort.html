@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{.title}}</title>
+{{template "/base/meta.html"}}
+</head>
+<body>
+<div class="row">
+    <div class="col-md">
+        <div class="tile">
+            <div class="row" >
+                <div class="col-md-10" style="margin-left: 10px">
+                            <label class="form-check-inline">
+                                <input id="checkbox_all"class="form-check-input" type="checkbox">
+                            </label>
+                    <button  id="btn_add" class="btn btn-primary btn-sm" type="button "><i class="fa fa-fw fa-lg fa-plus-circle "></i> 添加</button>
+                    <button  id="btn_delete" class="btn btn-secondary btn-sm" type="button"><i class="fa fa-fw fa-lg fa-times-circle"></i>删除</button>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>选择</th>
+                    <th>编号</th>
+                    <th>图书分类</th>
+                    <th>分类简介</th>
+                    <th>分类管理</th>
+                </tr>
+                </thead>
+                <tbody id="book_sort_list">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
