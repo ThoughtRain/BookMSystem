@@ -3,7 +3,14 @@
 <head>
     <title>{{.title}}</title>
 {{template "/base/meta.html"}}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.13.1/bootstrap-table.min.css">
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.13.1/bootstrap-table.min.js"></script>
 
+    <!-- Latest compiled and minified Locales -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.13.1/locale/bootstrap-table-zh-CN.min.js"></script>
 </head>
 <body class="app sidebar-mini rtl">
 <header class="app-header"><a class="app-header__logo" href="index.html">Vali</a>
@@ -118,7 +125,7 @@
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-circle-o"></i>管理用户
                 </a></li>
-                <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-circle-o"></i>用户角色
+                <li><a class="treeview-item" href="{{.url}}/userRole"><i class="icon fa fa-circle-o"></i>用户角色
                 </a></li>
             </ul>
         </li>

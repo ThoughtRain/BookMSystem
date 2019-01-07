@@ -25,7 +25,7 @@ func Init()  {
 	//}
 	orm.RegisterDriver("mysql", orm.DRMySQL)
 	orm.RegisterDataBase("default", "mysql", dsn)
-	orm.RegisterModel(new (User),new (Book),new (BorrowBean),new(ReturnTable),new(BookSort))
+	orm.RegisterModel(new (User),new (Book),new (BorrowBean),new(ReturnTable),new(BookSort),new(UserRole))
 	orm.RunSyncdb("default", false, true)
 	orm.RunCommand()
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{

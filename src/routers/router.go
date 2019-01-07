@@ -28,4 +28,8 @@ func init() {
 	beego.Router("/book/update", &controllers.BookManagerController{}, "Post:Update")
 	beego.Router("/book/manager", &controllers.BookManagerController{}, "Get:ManagerBookBorrow")
 	beego.Router("/book/giveback", &controllers.BookManagerController{}, "Get:ManagerBookBack")
+	/**
+	用户管理
+	 */
+	beego.Router("/userRole", &controllers.UserRoleManagerController{}, "Get:UserRole")
 }
