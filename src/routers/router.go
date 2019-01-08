@@ -32,4 +32,5 @@ func init() {
 	用户管理
 	 */
 	beego.Router("/userRole", &controllers.UserRoleManagerController{}, "Get:UserRole")
+	beego.Router("/userRole/addRole", &controllers.UserRoleManagerController{}, "Post:AddRole")
 }

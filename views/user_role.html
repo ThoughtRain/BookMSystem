@@ -28,6 +28,7 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src="/static/js/userrole.js"></script>
 <script type="text/javascript">
     var book ={{.rolelist}}
             $("#role_table").bootstrapTable({ // 对应table标签的id
@@ -42,14 +43,20 @@
                 search: false, //显示搜索框
                 data: book,
                 columns: [{
-                    field: 'Id',
-                    title: '书籍编号'
+                    field: 'no',
+                    title: '书籍编号',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        return index + 1;
+                    }
                 }, {
                     field: 'RoleName',
-                    title: '角色'
+                    title: '角色',
+                    align: 'center',
                 }, {
                     field: 'RoleDescription',
                     title: '描述'
+                    , align: 'center',
                 }, {
                     field: 'operate',
                     title: '操作',
@@ -62,11 +69,8 @@
 
     function operateFormatter(value, row, index) {
         return [
-            '<button type="button" class="RoleOfA btn btn-default  btn-sm" style="margin-right:15px;">A权限</button>',
-            '<button type="button" class="RoleOfB btn btn-default  btn-sm" style="margin-right:15px;">B权限</button>',
-            '<button type="button" class="RoleOfC btn btn-default  btn-sm" style="margin-right:15px;">C权限</button>',
-            '<button type="button" class="RoleOfD btn btn-default  btn-sm" style="margin-right:15px;">绑定D</button>',
-            '<button type="button" class="RoleOfEdit btn btn-default  btn-sm" style="margin-right:15px;">编辑</button>'
+            '<button id="btn_role_save" class="btn btn-primary btn-sm" type="button "><i class="fa fa-fw fa-lg fa-check-circle"></i> 修改</button>\n',
+            '<button id="btn_role_cancel" class="btn btn-secondary btn-sm" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i> 取消</button>\n'
         ].join('');
 
     }
@@ -84,6 +88,8 @@
         'click.RoleOfEdit': function (e, value, row, index) {
         }
     };
+
+    userRole.addUserRole("us", "", "")
 </script>
 
 

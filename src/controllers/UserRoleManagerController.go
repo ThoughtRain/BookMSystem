@@ -15,3 +15,10 @@ func (controller *UserRoleManagerController) UserRole() {
 	controller.Layout = "main.html"
 	controller.TplName = "user_role.html"
 }
+func (controller *UserRoleManagerController) AddRole() {
+	roleName := controller.GetString("roleName")
+	roleDes := controller.GetString("roleDes")
+	models.SaveUserRole(roleName, roleDes)
+	controller.Data["json"] = ErrorBean{Code: 200, Message: "成功"}
+	controller.ServeJSON()
+}

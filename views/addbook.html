@@ -22,8 +22,11 @@
                 search: false, //显示搜索框
                 data: book,
                 columns: [{
-                    field: 'Id',
-                    title: '书籍编号'
+                    field: 'no',
+                    title: '书籍编号',
+                    formatter: function (value, row, index) {
+                        return index + 1;
+                    }
                 }, {
                     field: 'BookName',
                     title: '书籍名称'
