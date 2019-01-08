@@ -30,66 +30,11 @@
 </body>
 <script type="text/javascript" src="/static/js/userrole.js"></script>
 <script type="text/javascript">
+
     var book ={{.rolelist}}
-            $("#role_table").bootstrapTable({ // 对应table标签的id
-                striped: true,//隔行变色
-                showColumns: false,// 列
-                toobar: '#toolbar',
-                pagination: true, //分页
-                paginationPreText: '上一页',
-                paginationNextText: '下一页',
-                pageList: [5, 10, 25, 50, 100],
-                //    showRefresh: true,//显示刷新
-                search: false, //显示搜索框
-                data: book,
-                columns: [{
-                    field: 'no',
-                    title: '书籍编号',
-                    align: 'center',
-                    formatter: function (value, row, index) {
-                        return index + 1;
-                    }
-                }, {
-                    field: 'RoleName',
-                    title: '角色',
-                    align: 'center',
-                }, {
-                    field: 'RoleDescription',
-                    title: '描述'
-                    , align: 'center',
-                }, {
-                    field: 'operate',
-                    title: '操作',
-                    align: 'center',
-                    // events: operateEvents,
-                    formatter: operateFormatter
-                }]
-
-            })
-
-    function operateFormatter(value, row, index) {
-        return [
-            '<button id="btn_role_save" class="btn btn-primary btn-sm" type="button "><i class="fa fa-fw fa-lg fa-check-circle"></i> 修改</button>\n',
-            '<button id="btn_role_cancel" class="btn btn-secondary btn-sm" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i> 取消</button>\n'
-        ].join('');
-
-    }
-
-    window.operateEvents = {
-        'click.RoleOfA': function (e, value, row, index) {
-            alert("A");
-        },
-        'click.RoleOfB': function (e, value, row, index) {
-            alert("B");
-        },
-        'click.RoleOfC': function (e, value, row, index) {
-            alert("C");
-        },
-        'click.RoleOfEdit': function (e, value, row, index) {
-        }
-    };
-
+            userRole.updateRole(book, "", "")
     userRole.addUserRole("us", "", "")
+
 </script>
 
 

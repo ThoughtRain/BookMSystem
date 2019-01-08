@@ -33,4 +33,6 @@ func init() {
 	 */
 	beego.Router("/userRole", &controllers.UserRoleManagerController{}, "Get:UserRole")
 	beego.Router("/userRole/addRole", &controllers.UserRoleManagerController{}, "Post:AddRole")
+	beego.Router("/userRole/UpdateRole", &controllers.UserRoleManagerController{}, "Post:UpdateRole")
+	beego.Router("/userRole/deleteRole", &controllers.UserRoleManagerController{}, "Post:DeleteRole")
 }

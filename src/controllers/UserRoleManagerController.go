@@ -22,3 +22,17 @@ func (controller *UserRoleManagerController) AddRole() {
 	controller.Data["json"] = ErrorBean{Code: 200, Message: "成功"}
 	controller.ServeJSON()
 }
+func (controller *UserRoleManagerController) UpdateRole() {
+	Id, _ := controller.GetInt("Id")
+	roleName := controller.GetString("roleName")
+	roleDes := controller.GetString("roleDes")
+	models.UpdateById(Id, models.UserRole{RoleName: roleName, RoleDescription: roleDes})
+	controller.Data["json"] = ErrorBean{Code: 200, Message: "成功"}
+	controller.ServeJSON()
+}
+func (controller *UserRoleManagerController) DeleteRole() {
+	Id, _ := controller.GetInt("Id")
+	models.DeleteById(Id)
+	controller.Data["json"] = ErrorBean{Code: 200, Message: "成功"}
+	controller.ServeJSON()
+}

@@ -18,3 +18,14 @@ func GetUserRoleList() ([]*UserRole) {
 	orm.NewOrm().QueryTable("user_role").All(&userRole);
 	return userRole;
 }
+
+func UpdateById(id int, role UserRole) (int64, error) {
+	return orm.NewOrm().QueryTable("user_role").Filter("id", id).Update(orm.Params{
+		"id":               role.Id,
+		"role_name":        role.RoleName,
+		"role_description": role.RoleDescription,
+	})
+}
+func DeleteById(id int)(int64, error) {
+	return orm.NewOrm().QueryTable("book_sort").Filter("id", id).Delete()
+}

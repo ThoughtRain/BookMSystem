@@ -302,7 +302,7 @@ var bookSort = {
 
 
         });
-        $('button.btn-secondary').on("click", function () {
+        $('#btn_dialog_cancel').on("click", function () {
             var id = $(this).attr('id');
             var sort = json[id - 1];
             Swal({

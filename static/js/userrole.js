@@ -134,11 +134,96 @@ var userRole = {
 
         })
     }
+    , queryUserRole: function (url, mapObj, callBack, callError) {
 
-    ,
-    queryUserRole: function (url, mapObj, callBack, callError) {
+    }, updateRole: function (book, mapObj, callBack, callError) {
+
+        $("#role_table").bootstrapTable({ // 对应table标签的id
+            striped: true,//隔行变色
+            showColumns: false,// 列
+            pagination: true, //分页
+            paginationPreText: '上一页',
+            paginationNextText: '下一页',
+            pageList: [5, 10, 25, 50, 100],
+            //    showRefresh: true,//显示刷新
+            search: false, //显示搜索框
+            data: book,
+            columns: [{
+                field: 'no',
+                title: '书籍编号',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return index + 1;
+                }
+            }, {
+                field: 'RoleName',
+                title: '角色',
+                align: 'center',
+            }, {
+                field: 'RoleDescription',
+                title: '描述'
+                , align: 'center',
+            }, {
+                field: 'operate',
+                title: '操作',
+                align: 'center',
+                formatter: operateFormatter,
+                // events: operate
+            }]
+
+        })
+
+        function operateFormatter(value, row, index) {
+            return [
+                '<button  class="btn btn-primary btn-sm" onclick="roleUpdate(index)" type="button "><i class="fa fa-fw fa-lg fa-check-circle"></i> 修改</button>\n',
+                '<button  class="btn btn-secondary btn-sm" onclick="roleDelete(index)" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>删除</button>\n'
+            ].join('');
+
+        }
 
     }
+
+}
+
+function roleUpdate(index) {
+    alert("A");
+}
+
+function roleDelete(index) {
+    var sort = json[index - 1];
+    Swal({
+        title: '提示',
+        text: "是否删除这条数据",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '确认删除',
+        cancelButtonText: '取消'
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                type: 'Post',
+                url: '/userRole/deleteRole',
+                data: {
+                    "id": index,
+                },
+                async: false
+                , success: function (res) {
+                    swal.close()
+                    window.location.reload()
+                    successAlert("提示", "删除成功")
+
+                },
+                error: function (res) {
+                    //error(res);
+                    swal.close()
+                    errorAlert("提示", "上传失败")
+                }
+            });
+
+        }
+    })
 
 }
 
