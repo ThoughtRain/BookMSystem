@@ -19,6 +19,7 @@ func init() {
 	beego.Router("/user/login", &controllers.LoginController{}, "Post:Login")
 	beego.Router("/user/login", &controllers.LoginController{}, "Get:LoginPage")
 	beego.Router("/user/loginout", &controllers.LoginController{}, "*:LoginOut")
+	beego.Router("/user/userList", &controllers.ManagerUserController{}, "Get:UserList")
 	/**
 	获取书籍分类
 	 */
