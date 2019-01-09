@@ -26,6 +26,6 @@ func UpdateById(id int, role UserRole) (int64, error) {
 		"role_description": role.RoleDescription,
 	})
 }
-func DeleteById(id int)(int64, error) {
-	return orm.NewOrm().QueryTable("book_sort").Filter("id", id).Delete()
+func DeleteById(id int) (int64, error) {
+	return orm.NewOrm().QueryTable("user_role").Filter("id", id).Delete()
 }

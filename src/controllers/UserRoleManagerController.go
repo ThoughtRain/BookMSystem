@@ -24,14 +24,16 @@ func (controller *UserRoleManagerController) AddRole() {
 }
 func (controller *UserRoleManagerController) UpdateRole() {
 	Id, _ := controller.GetInt("Id")
-	roleName := controller.GetString("roleName")
-	roleDes := controller.GetString("roleDes")
+	roleName := controller.GetString("RoleName")
+	roleDes := controller.GetString("RoleDes")
+	println("修改数据", Id, roleDes, roleDes)
 	models.UpdateById(Id, models.UserRole{RoleName: roleName, RoleDescription: roleDes})
 	controller.Data["json"] = ErrorBean{Code: 200, Message: "成功"}
 	controller.ServeJSON()
 }
 func (controller *UserRoleManagerController) DeleteRole() {
 	Id, _ := controller.GetInt("Id")
+	println("ID的是", Id);
 	models.DeleteById(Id)
 	controller.Data["json"] = ErrorBean{Code: 200, Message: "成功"}
 	controller.ServeJSON()

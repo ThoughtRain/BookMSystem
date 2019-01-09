@@ -1,3 +1,4 @@
+var indexId;
 var userRole = {
 
     addUserRole: function (url, mapObj, callBack, callError) {
@@ -167,63 +168,137 @@ var userRole = {
                 field: 'operate',
                 title: '操作',
                 align: 'center',
-                formatter: operateFormatter,
-                // events: operate
+                formatter: function (value, row, index) {
+                    return [
+                        '<button  class="btn btn-primary btn-sm"  type="button "><i class="fa fa-fw fa-lg fa-check-circle"></i> 修改</button>\n',
+                        '<button  class="btn btn-secondary btn-sm" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>删除</button>\n'
+                    ].join('');
+                },
+                events: window.operate = {
+                    'click .btn-secondary': function (value, row, index) {
+                        Swal({
+                            title: '提示',
+                            text: "是否删除这条数据",
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: '确认删除',
+                            cancelButtonText: '取消'
+                        }).then((result) => {
+                            if (result.value) {
+                                $.ajax({
+                                    type: 'Post',
+                                    url: '/userRole/deleteRole',
+                                    data: {
+                                        "Id": index.Id,
+                                    },
+                                    async: false
+                                    , success: function (res) {
+                                        swal.close()
+                                        window.location.reload()
+                                        successAlert("提示", "删除成功")
+
+                                    },
+                                    error: function (res) {
+                                        //error(res);
+                                        swal.close()
+                                        errorAlert("提示", "上传失败")
+                                    }
+                                });
+
+                            }
+                        })
+                    }, 'click .btn-primary': function (value, row, index) {
+
+                        swal({
+                            title: '修改权限',
+                            html:
+                            '<div class="row user">\n' +
+                            '<div class="col-md">\n' +
+                            '  <div class="tab-content">\n' +
+                            '    <div class="tab-pane active" id="user-settings">\n' +
+                            '      <div class="tile user-settings">\n' +
+                            '        <form>\n' +
+                            '          <div class="row mb-4">\n' +
+                            '            <div class="col-md">\n' +
+                            '              <label style="float: left">权限分类</label>\n' +
+                            '              <input id="book_role" class="form-control" autofocus="autofocus" placeholder="添加权限分类" type="text" >\n' +
+                            '            </div>\n' +
+                            '          </div>\n' +
+                            '          <div class="form-group">\n' +
+                            '            <label style="float: left"  for="exampleTextarea">分类说明</label>\n' +
+                            '            <textarea  id="role_des_book" class="form-control" placeholder="分类说明" rows="3" ></textarea>\n' +
+                            '          </div>\n' +
+                            '        </form>\n' +
+                            ' <div class="row mb-10">\n' +
+                            '                            <div class="col-md-12">\n' +
+                            '                                <button id="btn_user_role_update" class="btn btn-primary btn-sm" type="button "><i class="fa fa-fw fa-lg fa-check-circle"></i> 确定修改</button>\n' +
+                            '                                <button id="btn_user_role_cancel" class="btn btn-secondary btn-sm" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i> 取消</button>\n' +
+                            '                            </div>\n' +
+                            '                        </div>' +
+                            '      </div>\n' +
+                            '    </div>\n' +
+                            '  </div>\n' +
+                            '</div>\n' +
+                            '</div>\n' +
+                            '</div>',
+                            showCloseButton: false,
+                            showConfirmButton: false,
+                            showCancelButton: false,
+                            focusCancel: false,
+                            confirmButtonText:
+                                '<i class="fa fa-thumbs-up"></i> 确定修改',
+                            cancelButtonText:
+                                '<i class="fa fa-thumbs-down"></i>取消',
+                            allowOutsideClick: false,
+                        })
+                        $("#role_des_book").val(index.RoleDescription);
+                        $("#book_role").val(index.RoleName);
+                        $("#btn_user_role_cancel").click(function () {
+                            swal.close()
+                        })
+                        $("#btn_user_role_update").click(function () {
+                            var roleName = $("#book_role").val();
+                            var roleDes = $("#role_des_book").val();
+                            if (isEmpty(roleName)) {
+                                Toast("请输入类名")
+                                return false
+                            }
+                            if (isEmpty(roleDes)) {
+                                Toast("请输简介")
+                                return false
+                            }
+                            $.ajax({
+                                type: 'Post',
+                                url: '/userRole/UpdateRole',
+                                data: {
+                                    "Id": index.Id,
+                                    "RoleName": roleName,
+                                    "RoleDes": roleDes
+                                },
+                                async: false
+                                , success: function (res) {
+                                    swal.close()
+                                    window.location.reload()
+                                    successAlert("提示", "删除成功")
+
+                                },
+                                error: function (res) {
+                                    //error(res);
+                                    swal.close()
+                                    errorAlert("提示", "上传失败")
+                                }
+                            });
+                        })
+                    }
+
+                }
             }]
 
         })
 
-        function operateFormatter(value, row, index) {
-            return [
-                '<button  class="btn btn-primary btn-sm" onclick="roleUpdate(index)" type="button "><i class="fa fa-fw fa-lg fa-check-circle"></i> 修改</button>\n',
-                '<button  class="btn btn-secondary btn-sm" onclick="roleDelete(index)" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>删除</button>\n'
-            ].join('');
-
-        }
-
     }
-
-}
-
-function roleUpdate(index) {
-    alert("A");
-}
-
-function roleDelete(index) {
-    var sort = json[index - 1];
-    Swal({
-        title: '提示',
-        text: "是否删除这条数据",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '确认删除',
-        cancelButtonText: '取消'
-    }).then((result) => {
-        if (result.value) {
-            $.ajax({
-                type: 'Post',
-                url: '/userRole/deleteRole',
-                data: {
-                    "id": index,
-                },
-                async: false
-                , success: function (res) {
-                    swal.close()
-                    window.location.reload()
-                    successAlert("提示", "删除成功")
-
-                },
-                error: function (res) {
-                    //error(res);
-                    swal.close()
-                    errorAlert("提示", "上传失败")
-                }
-            });
-
-        }
-    })
 
 }
 
