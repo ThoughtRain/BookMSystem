@@ -80,7 +80,7 @@ func (controller *ManagerUserController) UserList() {
 	controller.Data["url"] = "http://127.1.1.1:8081"
 	controller.Data["page_home"] = "用户角色"
 	controller.Layout = "main.html"
-	controller.TplName = "user_role.html"
+	controller.TplName = "user_list.html"
 }
 func (controller *ManagerUserController) CreateUser() {
 
