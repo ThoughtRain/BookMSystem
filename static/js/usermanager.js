@@ -35,6 +35,14 @@ var usermanger = {
                 field: 'UserPhone',
                 title: '电话号码'
                 , align: 'center',
+            }, {
+                field: 'UserRole',
+                title: '角色'
+                , align: 'center',
+            }, {
+                field: 'UserPhone',
+                title: '电话号码'
+                , align: 'center',
             }
             ]
         })
