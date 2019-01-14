@@ -22,6 +22,9 @@ type User struct {
 	UserIntegrity int
 	UserPic       string
 }
+type UserQuery struct {
+
+}
 
 func GetLoginUser(name string) (user User, er error) {
 	err := orm.NewOrm().QueryTable("user").Filter("user_id", name).One(&user)
