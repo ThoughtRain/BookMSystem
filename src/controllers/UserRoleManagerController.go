@@ -13,6 +13,7 @@ func (controller *UserRoleManagerController) UserRole() {
 	controller.Data["url"] = "http://127.1.1.1:8081"
 	controller.Data["page_home"] = "用户角色"
 	controller.Layout = "main.html"
+	controller.Data["page"] = "userRole"
 	controller.TplName = "user_role.html"
 }
 func (controller *UserRoleManagerController) AddRole() {

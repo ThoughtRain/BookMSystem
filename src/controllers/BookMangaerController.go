@@ -16,6 +16,7 @@ func (controller *BookManagerController) ListSort() {
 	controller.Data["url"] = "http://127.1.1.1:8081"
 	controller.Data["page_home"] = "图书分类"
 	controller.Layout = "main.html"
+	controller.Data["page"] = "bookSort"
 	controller.TplName = "booksort.html"
 }
 func (controller *BookManagerController) ManagerBookBorrow() {

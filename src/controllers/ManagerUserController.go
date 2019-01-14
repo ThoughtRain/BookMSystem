@@ -77,6 +77,7 @@ func (controller *ManagerUserController) UserList() {
 	var userList = models.GetUserList()
 	controller.Data["userList"] = userList
 	controller.Data["title"] = "用户列表"
+	controller.Data["page"] = "user"
 	controller.Data["url"] = "http://127.1.1.1:8081"
 	controller.Data["page_home"] = "用户列表"
 	controller.Layout = "main.html"

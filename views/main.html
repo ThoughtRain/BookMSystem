@@ -125,7 +125,7 @@
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="{{.url}}/user/userList"><i class="icon fa fa-circle-o"></i>管理用户
                 </a></li>
-                <li><a class="treeview-item" href="{{.url}}/userRole"><i class="icon fa fa-circle-o"></i>用户角色
+                <li><a class="treeview-item" id="treeview-item-userrole" href="{{.url}}/userRole"><i class="icon fa fa-circle-o"></i>用户角色
                 </a></li>
             </ul>
         </li>
@@ -177,6 +177,8 @@
         ga('create', 'UA-72504830-1', 'auto');
         ga('send', 'pageview');
     }
+    var page ={{.page}}
+            tree.Operator(page);
     user.initSetting();
     user.saveUser("http://192.168.2.11:8081/user/update")
     var json ={{.sortJson}}

@@ -1,30 +1,40 @@
-(function () {
-    "use strict";
+var tree = {
+    Operator: function (page) {
+        "use strict";
 
-    var treeviewMenu = $('.app-menu');
+        var treeviewMenu = $('.app-menu');
 
-    // Toggle Sidebar
-    $('[data-toggle="sidebar"]').click(function (event) {
-        event.preventDefault();
-        $('.app').toggleClass('sidenav-toggled');
-    });
+        // Toggle Sidebar
+        $('[data-toggle="sidebar"]').click(function (event) {
+            event.preventDefault();
+            $('.app').toggleClass('sidenav-toggled');
+        });
 
-    // Activate sidebar treeview toggle
-    $("[data-toggle='treeview']").click(function (event) {
-        event.preventDefault();
-        if (!$(this).parent().hasClass('is-expanded')) {
-            treeviewMenu.find("[data-toggle='treeview']").parent().removeClass('is-expanded');
-        }
-        $(this).parent().toggleClass('is-expanded');
-    });
+        // Activate sidebar treeview toggle
+        $("[data-toggle='treeview']").click(function (event) {
+            event.preventDefault();
+            if (!$(this).parent().hasClass('is-expanded')) {
+                treeviewMenu.find("[data-toggle='treeview']").parent().removeClass('is-expanded');
+            }
+            $(this).parent().toggleClass('is-expanded');
+            switch (page) {
+                case "userRole":
+                    //   alert("点击了")
+                    $("#treeview-item-userrole").parent().toggleClass('is-expanded');
+                    break
+            }
+        });
 
-    // Set initial active toggle
-    $("[data-toggle='treeview.'].is-expanded").parent().toggleClass('is-expanded');
+        // Set initial active toggle
 
-    //Activate bootstrip tooltips
-    $("[data-toggle='tooltip']").tooltip();
 
-})();
+        //Activate bootstrip tooltips
+      //  $("[data-toggle='tooltip']").tooltip();
+
+    }
+
+
+}
 var comm = {
     /**
      * 登录
