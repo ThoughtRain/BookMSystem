@@ -1,6 +1,9 @@
 package models
 
-import "github.com/astaxie/beego/orm"
+import (
+	"github.com/astaxie/beego/orm"
+	"fmt"
+)
 
 /**
    TODO UserName用户的姓名 UserBirthday 用户生日 UserId用户id
@@ -23,7 +26,9 @@ type User struct {
 	UserPic       string
 }
 type UserQuery struct {
-
+	User            User
+	RoleName        string
+	RoleDescription string
 }
 
 func GetLoginUser(name string) (user User, er error) {
@@ -36,8 +41,16 @@ func SaveUserData(user *User) (int64, error) {
 	})
 	return num, err
 }
-func GetUserList() ([]*User) {
-	var userList []*User
-	orm.NewOrm().QueryTable("user").All(&userList)
+func GetUserList() ([]*UserQuery) {
+	var userList []*UserQuery
+	var orm = orm.NewOrm()
+	var users []*User
+	orm.QueryTable("user").All(&users)
+	for _, user := range users {
+		var userRole UserRole
+		orm.QueryTable("user_role").Filter("id", user.UserRole).One(&userRole)
+		fmt.Print("Id:开始了, RoleName: %d, RoleDescription: %s\n", userRole.Id, userRole.RoleName, userRole.RoleDescription)
+	}
+
 	return userList
 }

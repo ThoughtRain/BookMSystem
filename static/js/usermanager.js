@@ -36,7 +36,7 @@ var usermanger = {
                 title: '电话号码'
                 , align: 'center',
             }, {
-                field: 'UserRole',
+                field: 'RoleName',
                 title: '角色'
                 , align: 'center',
             }, {
