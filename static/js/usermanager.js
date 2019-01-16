@@ -22,28 +22,29 @@ var usermanger = {
             data: userList,
             columns: [{
                 field: 'no',
-                title: '书籍编号',
+                title: '编号',
                 align: 'center',
                 formatter: function (value, row, index) {
                     return index + 1;
                 }
             }, {
-                field: 'UserName',
+                field: 'User.UserName',
                 title: '角色',
                 align: 'center',
             }, {
-                field: 'UserPhone',
+                field: 'User.UserPhone',
                 title: '电话号码'
                 , align: 'center',
             }, {
                 field: 'RoleName',
                 title: '角色'
                 , align: 'center',
-            }, {
-                field: 'UserPhone',
-                title: '电话号码'
-                , align: 'center',
             }
+                // , {
+                //     field: 'User.UserPhone',
+                //     title: '电话号码'
+                //     , align: 'center',
+                // }
             ]
         })
     }

@@ -41,15 +41,22 @@ func SaveUserData(user *User) (int64, error) {
 	})
 	return num, err
 }
-func GetUserList() ([]*UserQuery) {
-	var userList []*UserQuery
+func GetUserList() ([]UserQuery) {
 	var orm = orm.NewOrm()
 	var users []*User
 	orm.QueryTable("user").All(&users)
+	var userList = make([]UserQuery, 0, len(users))
 	for _, user := range users {
+		var userQuery UserQuery
 		var userRole UserRole
 		orm.QueryTable("user_role").Filter("id", user.UserRole).One(&userRole)
 		fmt.Print("Id:开始了, RoleName: %d, RoleDescription: %s\n", userRole.Id, userRole.RoleName, userRole.RoleDescription)
+		userQuery.User.UserName = user.UserName
+		userQuery.User.UserPhone = user.UserPhone
+		userQuery.User.UserSex = user.UserSex
+		userQuery.RoleName = userRole.RoleName
+		userQuery.RoleDescription = userRole.RoleDescription
+		userList = append(userList, userQuery)
 	}
 
 	return userList
