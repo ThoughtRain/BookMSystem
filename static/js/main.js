@@ -9,6 +9,14 @@ var tree = {
             event.preventDefault();
             $('.app').toggleClass('sidenav-toggled');
         });
+        switch (page) {
+            case "user":
+            case "userRole":
+                //   alert("点击了")
+                $("#treeview_two").toggleClass('is-expanded');
+
+                break
+        }
 
         // Activate sidebar treeview toggle
         $("[data-toggle='treeview']").click(function (event) {
@@ -17,19 +25,14 @@ var tree = {
                 treeviewMenu.find("[data-toggle='treeview']").parent().removeClass('is-expanded');
             }
             $(this).parent().toggleClass('is-expanded');
-            switch (page) {
-                case "userRole":
-                    //   alert("点击了")
-                    $("#treeview-item-userrole").parent().toggleClass('is-expanded');
-                    break
-            }
+
         });
 
         // Set initial active toggle
 
 
         //Activate bootstrip tooltips
-      //  $("[data-toggle='tooltip']").tooltip();
+        $("[data-toggle='tooltip']").tooltip();
 
     }
 
@@ -211,7 +214,7 @@ var user = {
 
 var bookSort = {
     selectAllBox: function (json) {
-
+        var index = 0;
         for (var index = 0; index < json.length; index++) {
             var sort = json[index]
             $("#book_sort_list").append(
